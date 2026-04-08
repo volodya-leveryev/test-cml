@@ -8,7 +8,8 @@ permissions:
 jobs:
   train:
     name: Train job
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: self-hosted
     container: docker://iterativeai/cml:0-dvc2-base1
     steps:
       - name: Checkout repo
@@ -38,5 +39,7 @@ jobs:
           echo "## Model Report" >> report.md
           cat metrics.txt >> report.md
           echo "### Confusion Matrix" >> report.md
-          echo "![](plot.png)" >> report.md
+          echo "![](plot1.png)" >> report.md
+          echo "### Feature Importance" >> report.md
+          echo "![](plot2.png)" >> report.md
           cml comment create report.md
